@@ -11,18 +11,10 @@ public class Buffalo extends Herbivores implements Eatable{
     @Override
     public boolean chanceOfBeingEaten(Animal animal) {
         if (animal instanceof Bear) {
-            if (ThreadLocalRandom.current().nextInt(100) <= 20) {
-                return true;
-            }else {
-                return false;
-            }
+            return ThreadLocalRandom.current().nextInt(100) <= 20;
         }
         if (animal instanceof Wolf){
-            if (ThreadLocalRandom.current().nextInt(100) <= 10) {
-                return true;
-            }else {
-                return false;
-            }
+            return ThreadLocalRandom.current().nextInt(100) <= 10;
         }
         return false;
     }

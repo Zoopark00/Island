@@ -26,11 +26,7 @@ public class Boa extends Predators implements Eatable{
     @Override
     public boolean chanceOfBeingEaten(Animal animal) {
         if (animal instanceof Bear) {
-            if (ThreadLocalRandom.current().nextInt(100) <= 80) {
-                return true;
-            }else {
-                return false;
-            }
+            return ThreadLocalRandom.current().nextInt(100) <= 80;
         }
         return false;
     }
