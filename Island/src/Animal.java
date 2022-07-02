@@ -2,12 +2,17 @@ public abstract class Animal {
      double weight;
     int speed;
     double weightForSatiety;
+    int chanceOfBeingEaten;
 
-    public void eat() {
-
+    public boolean eat(Animal animal) {
+        if (animal instanceof Eatable){
+            return ((Eatable) animal).chanceOfBeingEaten(this);
+        } else {
+            return false;
+        }
     }
 
-    public void sex(){
+    public void sex(Animal animal){
 
     }
 

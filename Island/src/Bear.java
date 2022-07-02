@@ -6,16 +6,21 @@ public class Bear extends Predators {
         speed = 3;
         weightForSatiety = 200;
 
+
     }
 
     @Override
-    public void eat() {
-        super.eat();
+    public boolean eat(Animal animal) {
+       if (animal instanceof Eatable){
+       return ((Eatable) animal).chanceOfBeingEaten(this);
+       } else {
+           return false;
+       }
     }
 
     @Override
-    public void sex() {
-        super.sex();
+    public void sex(Animal animal) {
+
     }
 
     @Override
