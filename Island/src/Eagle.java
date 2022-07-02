@@ -1,5 +1,5 @@
-public class Igle extends Predators{
-    public Igle() {
+public class Eagle extends Predators{
+    public Eagle() {
         weight = 6;
         speed = 3;
         weightForSatiety = 1;

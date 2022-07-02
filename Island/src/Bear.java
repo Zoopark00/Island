@@ -1,25 +1,26 @@
-public class Bear extends Predators{
-    public Bear(double weight, int speed, double weightForSatiety, int speed1, double weightForSatiety1, double weight1) {
-        super(weight, speed, weightForSatiety);
-        this.speed = speed1;
-        this.weightForSatiety = weightForSatiety1;
-        this.weight = weight1;
+public class Bear extends Predators {
+
+
+    public Bear() {
+        weight = 400;
+        speed = 3;
+        weightForSatiety = 200;
+
     }
 
-    private int speed = 2;
-        private double weightForSatiety=80;
-        private double weight = 500;
-
-    public int getSpeed() {
-        return speed;
+    @Override
+    public void eat() {
+        super.eat();
     }
 
-    public double getWeightForSatiety() {
-        return weightForSatiety;
+    @Override
+    public void sex() {
+        super.sex();
     }
 
-    public double getWeight() {
-        return weight;
+    @Override
+    public void move() {
+        super.move();
     }
 
     @Override
