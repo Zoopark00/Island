@@ -30,10 +30,6 @@ public class Rabbit extends Herbivores implements Eatable{
 
     @Override
     public String toString() {
-        return "Rabbit{" +
-                "weight=" + weight +
-                ", speed=" + speed +
-                ", weightForSatiety=" + weightForSatiety +
-                '}';
+        return "Rabbit";
     }
 }

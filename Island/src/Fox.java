@@ -21,10 +21,6 @@ public class Fox extends Predators implements Eatable {
 
     @Override
     public String toString() {
-        return "Fox{" +
-                "weight=" + weight +
-                ", speed=" + speed +
-                ", weightForSatiety=" + weightForSatiety +
-                '}';
+        return "Fox";
     }
 }

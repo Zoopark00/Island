@@ -4,7 +4,7 @@ public class Boar extends Herbivores implements Eatable{
     public Boar() {
         weight = 400;
         speed = 2;
-        weightForSatiety = 50;
+        weightForSatiety = 55;
     }
 
     @Override

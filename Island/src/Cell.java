@@ -1,9 +1,9 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Cell {
     List<Animal> cellList = new ArrayList<>();
+    List<Animal> childList = new ArrayList<>();
     static int maxWolf = 30;
     static int maxBoa = 30;
     static int maxFox = 50;
@@ -21,6 +21,37 @@ public class Cell {
     static int maxCaterpillar = 1000;
     static int maxPlants = 200;
 
+
+    public void sex() {
+        cellList.sort(Comparator.comparingDouble((Animal a) -> a.weightForSatiety));
+        for (int i = 0; i < cellList.size(); i++) {
+            for (int j = 1; j < cellList.size(); j++) {
+                if (cellList.get(i).sex(cellList.get(j + i)) == null) {
+                    break;
+                } else {
+                    childList.add(cellList.get(i).sex(cellList.get(j + i)));
+                    i++;
+                }
+                break;
+
+            }
+        }
+        cellList.addAll(childList);
+
+    }
+
+    public void eat() {
+
+        for (Animal animal : cellList) {
+            Random random = new Random();
+            int victim = random.nextInt(cellList.size());
+            System.out.println(victim);
+            if (animal.eat(cellList.get(victim))) {
+                cellList.remove(victim);
+            } else cellList.remove(animal);
+
+        }
+    }
 
     public static Cell[][] createField() {
 

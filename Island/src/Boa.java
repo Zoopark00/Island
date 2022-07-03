@@ -14,9 +14,13 @@ public class Boa extends Predators implements Eatable{
     }
 
     @Override
-    public void sex(Animal animal) {
-        super.sex(animal);
+    public Animal sex(Animal animal) {
+       if( animal instanceof Boa){
+           return new Boa();
+       }
+       return null;
     }
+
 
     @Override
     public void move() {
@@ -33,10 +37,6 @@ public class Boa extends Predators implements Eatable{
 
     @Override
     public String toString() {
-        return "Boa{" +
-                "weight=" + weight +
-                ", speed=" + speed +
-                ", weightForSatiety=" + weightForSatiety +
-                '}';
+        return "Boa";
     }
 }

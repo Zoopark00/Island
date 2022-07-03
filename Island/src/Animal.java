@@ -1,5 +1,5 @@
 public abstract class Animal {
-     double weight;
+    double weight;
     int speed;
     double weightForSatiety;
     int chanceOfBeingEaten;
@@ -12,8 +12,8 @@ public abstract class Animal {
         }
     }
 
-    public void sex(Animal animal){
-
+    public Animal sex(Animal animal){
+        return null;
     }
 
     public void move (){

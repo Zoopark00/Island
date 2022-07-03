@@ -5,22 +5,23 @@ public class Bear extends Predators {
         weight = 400;
         speed = 3;
         weightForSatiety = 200;
-
-
     }
 
     @Override
     public boolean eat(Animal animal) {
-       if (animal instanceof Eatable){
-       return ((Eatable) animal).chanceOfBeingEaten(this);
-       } else {
-           return false;
-       }
+        if (animal instanceof Eatable) {
+            return ((Eatable) animal).chanceOfBeingEaten(new Bear());
+        } else {
+            return false;
+        }
     }
 
     @Override
-    public void sex(Animal animal) {
-
+    public Animal sex(Animal animal) {
+        if (animal instanceof Bear){
+            return new Bear();
+        }
+        return null;
     }
 
     @Override
@@ -30,10 +31,6 @@ public class Bear extends Predators {
 
     @Override
     public String toString() {
-        return "Bear{" +
-                "weight=" + weight +
-                ", speed=" + speed +
-                ", weightForSatiety=" + weightForSatiety +
-                '}';
+        return "Bear";
     }
 }
