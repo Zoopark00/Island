@@ -6,11 +6,16 @@ public class Boa extends Predators implements Eatable{
     weight = 15;
     speed = 1;
     weightForSatiety = 3;
+    dead = false;
     }
 
     @Override
     public boolean eat(Animal animal) {
-        return super.eat(animal);
+        if (animal instanceof Eatable) {
+            return ((Eatable) animal).chanceOfBeingEaten(new Boa());
+        } else {
+            return false;
+        }
     }
 
     @Override

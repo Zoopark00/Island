@@ -5,6 +5,23 @@ public class Horse extends Herbivores implements Eatable{
         weight = 400;
         speed = 4;
         weightForSatiety = 60;
+        dead = false;
+    }
+    @Override
+    public boolean eat(Animal animal) {
+        if (animal instanceof Eatable) {
+            return ((Eatable) animal).chanceOfBeingEaten(new Horse());
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public Animal sex(Animal animal) {
+        if (animal instanceof Horse){
+            return new Horse();
+        }
+        return null;
     }
 
     @Override

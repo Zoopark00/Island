@@ -5,8 +5,24 @@ public class Goat extends Herbivores implements Eatable{
         weight = 60;
         speed = 3;
         weightForSatiety = 10;
+        dead = false;
+    }
+    @Override
+    public boolean eat(Animal animal) {
+        if (animal instanceof Eatable) {
+            return ((Eatable) animal).chanceOfBeingEaten(new Goat());
+        } else {
+            return false;
+        }
     }
 
+    @Override
+    public Animal sex(Animal animal) {
+        if (animal instanceof Goat){
+            return new Goat();
+        }
+        return null;
+    }
     @Override
     public boolean chanceOfBeingEaten(Animal animal) {
         if (animal instanceof Wolf){

@@ -6,6 +6,23 @@ public class Deer extends Herbivores implements Eatable{
         weight = 300;
         speed = 4;
         weightForSatiety = 50;
+        dead = false;
+    }
+    @Override
+    public boolean eat(Animal animal) {
+        if (animal instanceof Eatable) {
+            return ((Eatable) animal).chanceOfBeingEaten(new Deer());
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public Animal sex(Animal animal) {
+        if (animal instanceof Deer){
+            return new Deer();
+        }
+        return null;
     }
 
 

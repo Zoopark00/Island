@@ -5,6 +5,23 @@ public class Fox extends Predators implements Eatable {
         weight = 8;
         speed = 2;
         weightForSatiety = 2;
+        dead = false;
+    }
+    @Override
+    public boolean eat(Animal animal) {
+        if (animal instanceof Eatable) {
+            return ((Eatable) animal).chanceOfBeingEaten(new Fox());
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public Animal sex(Animal animal) {
+        if (animal instanceof Fox){
+            return new Fox();
+        }
+        return null;
     }
 
     @Override

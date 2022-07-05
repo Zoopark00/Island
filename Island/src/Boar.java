@@ -5,6 +5,29 @@ public class Boar extends Herbivores implements Eatable{
         weight = 400;
         speed = 2;
         weightForSatiety = 55;
+        dead = false;
+    }
+
+    @Override
+    public boolean eat(Animal animal) {
+        if (animal instanceof Eatable) {
+            return ((Eatable) animal).chanceOfBeingEaten(new Boar());
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public Animal sex(Animal animal) {
+        if (animal instanceof Boar){
+            return new Boar();
+        }
+        return null;
+    }
+
+    @Override
+    public void move() {
+        super.move();
     }
 
     @Override

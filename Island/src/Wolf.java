@@ -3,6 +3,23 @@ public class Wolf extends Predators{
         weight = 50;
         speed = 3;
         weightForSatiety = 8;
+        dead = false;
+    }
+    @Override
+    public boolean eat(Animal animal) {
+        if (animal instanceof Eatable) {
+            return ((Eatable) animal).chanceOfBeingEaten(new Wolf());
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public Animal sex(Animal animal) {
+        if (animal instanceof Wolf){
+            return new Wolf();
+        }
+        return null;
     }
 
     @Override

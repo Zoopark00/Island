@@ -5,6 +5,23 @@ public class Caterpillar extends Herbivores implements Eatable{
         weight = 0.01;
         speed = 1;
         weightForSatiety = 1;
+        dead = false;
+    }
+    @Override
+    public boolean eat(Animal animal) {
+        if (animal instanceof Eatable) {
+            return ((Eatable) animal).chanceOfBeingEaten(new Caterpillar());
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public Animal sex(Animal animal) {
+        if (animal instanceof Caterpillar){
+            return new Caterpillar();
+        }
+        return null;
     }
 
     @Override

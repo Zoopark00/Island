@@ -5,6 +5,23 @@ public class Mouse extends Herbivores implements Eatable {
         weight = 0.05;
         speed = 1;
         weightForSatiety = 0.01;
+        dead = false;
+    }
+    @Override
+    public boolean eat(Animal animal) {
+        if (animal instanceof Eatable) {
+            return ((Eatable) animal).chanceOfBeingEaten(new Mouse());
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public Animal sex(Animal animal) {
+        if (animal instanceof Mouse){
+            return new Mouse();
+        }
+        return null;
     }
 
     @Override

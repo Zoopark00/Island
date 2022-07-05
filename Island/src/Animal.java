@@ -3,6 +3,8 @@ public abstract class Animal {
     int speed;
     double weightForSatiety;
     int chanceOfBeingEaten;
+    boolean dead ;
+    int hungru = 0 ;
 
     public boolean eat(Animal animal) {
         if (animal instanceof Eatable){

@@ -5,6 +5,7 @@ public class Bear extends Predators {
         weight = 400;
         speed = 3;
         weightForSatiety = 200;
+        dead = false;
     }
 
     @Override

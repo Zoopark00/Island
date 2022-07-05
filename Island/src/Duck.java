@@ -5,6 +5,23 @@ public class Duck extends Herbivores implements Eatable{
         weight = 1;
         speed = 4;
         weightForSatiety = 0.15;
+        dead = false;
+    }
+    @Override
+    public boolean eat(Animal animal) {
+        if (animal instanceof Eatable) {
+            return ((Eatable) animal).chanceOfBeingEaten(new Duck());
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public Animal sex(Animal animal) {
+        if (animal instanceof Duck){
+            return new Duck();
+        }
+        return null;
     }
 
     @Override

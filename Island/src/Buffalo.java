@@ -5,7 +5,23 @@ public class Buffalo extends Herbivores implements Eatable{
         weight= 700;
         speed = 3;
         weightForSatiety = 50;
+        dead = false;
+    }
+    @Override
+    public boolean eat(Animal animal) {
+        if (animal instanceof Eatable) {
+            return ((Eatable) animal).chanceOfBeingEaten(new Buffalo());
+        } else {
+            return false;
+        }
+    }
 
+    @Override
+    public Animal sex(Animal animal) {
+        if (animal instanceof Buffalo){
+            return new Buffalo();
+        }
+        return null;
     }
 
     @Override

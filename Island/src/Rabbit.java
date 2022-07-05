@@ -5,6 +5,23 @@ public class Rabbit extends Herbivores implements Eatable{
         weight = 2;
         speed = 2;
         weightForSatiety = 0.45;
+        dead = false;
+    }
+    @Override
+    public boolean eat(Animal animal) {
+        if (animal instanceof Eatable) {
+            return ((Eatable) animal).chanceOfBeingEaten(new Rabbit());
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public Animal sex(Animal animal) {
+        if (animal instanceof Rabbit){
+            return new Rabbit();
+        }
+        return null;
     }
 
     @Override

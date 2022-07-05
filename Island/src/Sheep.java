@@ -5,7 +5,23 @@ public class Sheep extends Herbivores implements Eatable{
         weight = 70;
         speed = 3;
         weightForSatiety = 15;
+        dead = false;
+    }
+    @Override
+    public boolean eat(Animal animal) {
+        if (animal instanceof Eatable) {
+            return ((Eatable) animal).chanceOfBeingEaten(new Sheep());
+        } else {
+            return false;
+        }
+    }
 
+    @Override
+    public Animal sex(Animal animal) {
+        if (animal instanceof Sheep){
+            return new Sheep();
+        }
+        return null;
     }
 
     @Override

@@ -25,7 +25,7 @@ public class Cell {
     public void sex() {
         cellList.sort(Comparator.comparingDouble((Animal a) -> a.weightForSatiety));
         for (int i = 0; i < cellList.size(); i++) {
-            for (int j = 1; j < cellList.size(); j++) {
+            for (int j = 1; j < (cellList.size()-i); j++) {
                 if (cellList.get(i).sex(cellList.get(j + i)) == null) {
                     break;
                 } else {
@@ -33,25 +33,31 @@ public class Cell {
                     i++;
                 }
                 break;
-
             }
         }
         cellList.addAll(childList);
+        childList.clear();
 
     }
 
     public void eat() {
-
         for (Animal animal : cellList) {
-            Random random = new Random();
-            int victim = random.nextInt(cellList.size());
-            System.out.println(victim);
-            if (animal.eat(cellList.get(victim))) {
-                cellList.remove(victim);
-            } else cellList.remove(animal);
+            if (!animal.dead) {
+                int victim = ThreadLocalRandom.current().nextInt(cellList.size());
+                if (animal.eat(cellList.get(victim))) {
+                    cellList.get(victim).dead = true;
+                    animal.hungru--;
+                } else animal.hungru++;
+                if (animal.hungru > 2){
+                    animal.dead = true;
+                }
+
+            }
 
         }
+        cellList.removeIf(animal -> animal.dead);
     }
+
 
     public static Cell[][] createField() {
 
@@ -104,6 +110,9 @@ public class Cell {
                 }
                 for (int k = 0; k < random.nextInt(maxWolf); k++) {
                     field[i][j].cellList.add(new Wolf());
+                }
+                for (int k = 0; k < random.nextInt(maxPlants); k++) {
+                    field[i][j].cellList.add(new Plants());
                 }
 
 
