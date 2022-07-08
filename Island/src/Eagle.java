@@ -4,6 +4,7 @@ public class Eagle extends Predators{
         speed = 3;
         weightForSatiety = 1;
         dead = false;
+        AnimalType = String.valueOf(Eagle.class);
 
     }
     @Override

@@ -5,6 +5,8 @@ public abstract class Animal {
     int chanceOfBeingEaten;
     boolean dead ;
     int hungru = 0 ;
+    boolean isMove = false;
+    String AnimalType = String.valueOf(Animal.class);
 
     public boolean eat(Animal animal) {
         if (animal instanceof Eatable){

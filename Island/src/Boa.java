@@ -7,6 +7,7 @@ public class Boa extends Predators implements Eatable{
     speed = 1;
     weightForSatiety = 3;
     dead = false;
+        AnimalType = String.valueOf(Boa.class);
     }
 
     @Override

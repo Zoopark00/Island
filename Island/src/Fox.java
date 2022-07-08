@@ -6,6 +6,7 @@ public class Fox extends Predators implements Eatable {
         speed = 2;
         weightForSatiety = 2;
         dead = false;
+        AnimalType = String.valueOf(Fox.class);
     }
     @Override
     public boolean eat(Animal animal) {

@@ -6,6 +6,7 @@ public class Boar extends Herbivores implements Eatable{
         speed = 2;
         weightForSatiety = 55;
         dead = false;
+        AnimalType = String.valueOf(Boar.class);
     }
 
     @Override

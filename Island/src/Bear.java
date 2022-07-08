@@ -6,6 +6,7 @@ public class Bear extends Predators {
         speed = 3;
         weightForSatiety = 200;
         dead = false;
+        AnimalType = String.valueOf(Bear.class);
     }
 
     @Override

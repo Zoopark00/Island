@@ -6,6 +6,7 @@ public class Goat extends Herbivores implements Eatable{
         speed = 3;
         weightForSatiety = 10;
         dead = false;
+        AnimalType = String.valueOf(Goat.class);
     }
     @Override
     public boolean eat(Animal animal) {

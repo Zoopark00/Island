@@ -1,9 +1,10 @@
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Cell {
-    List<Animal> cellList = new ArrayList<>();
+public class Cell implements Runnable{
+   List<Animal> cellList = new ArrayList<>();
     List<Animal> childList = new ArrayList<>();
+
     static int maxWolf = 30;
     static int maxBoa = 30;
     static int maxFox = 50;
@@ -42,6 +43,7 @@ public class Cell {
 
     public void eat() {
         for (Animal animal : cellList) {
+            animal.isMove = false;
             if (!animal.dead) {
                 int victim = ThreadLocalRandom.current().nextInt(cellList.size());
                 if (animal.eat(cellList.get(victim))) {
@@ -56,6 +58,71 @@ public class Cell {
 
         }
         cellList.removeIf(animal -> animal.dead);
+    }
+    public static  void move(Cell[][] field) {
+        Map<String,Integer> map = new HashMap<>();
+        for (int i = 0; i < field.length; i++) {
+            for (int j = 0; j < field[0].length; j++) {
+                Iterator <Animal> it = field [i][j].cellList.iterator();
+
+                while (it.hasNext()) {
+                    Animal animal = it.next();
+                    if(map.containsKey(animal.AnimalType)) {
+                        map.put(animal.AnimalType, map.get(animal.AnimalType) +1);
+                    }else {
+                        map.put(animal.AnimalType, 1);
+                    }
+                    if (!animal.isMove) {
+                        if (animal instanceof Plants) {
+                            continue;
+                        }
+                        Random random = new Random();
+                        boolean chanse = random.nextBoolean();
+                        int speed = random.nextInt(0, animal.speed);
+                        if (speed != 0) {
+
+                            if (chanse) {
+                                speed = speed * (-1);
+                            }
+                            int x = i;
+                            int y = j;
+                            if (chanse) {
+                                x = i + speed;
+                            } else {
+                                y = j + speed;
+                            }
+                            if (x < 0) {
+                                x = x * (-1);
+                            }
+                            if (x >= field.length) {
+                                int xb = random.nextInt(1, animal.speed);
+                                x = (field.length) - xb;
+                            }
+                            if (y < 0) {
+                                y = y * (-1);
+                            }
+                            if (y >= field[0].length) {
+                                int yb = random.nextInt(1, animal.speed);
+                                y = (field.length) - yb;
+
+                            }
+
+                            if (x!=i && y!=j) {
+                                animal.isMove = true;
+                                field[x][y].cellList.add(animal);
+                                it.remove();
+                            }
+                        }
+                    }
+                }
+
+            }
+
+        }
+        System.out.println(map.toString());
+        System.out.println("End of Iteration");
+
+        map.clear();
     }
 
 
@@ -122,4 +189,9 @@ public class Cell {
         return field;
     }
 
+    @Override
+    public void run() {
+        eat();
+        sex();
+    }
 }

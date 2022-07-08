@@ -6,6 +6,7 @@ public class Caterpillar extends Herbivores implements Eatable{
         speed = 1;
         weightForSatiety = 1;
         dead = false;
+        AnimalType = String.valueOf(Caterpillar.class);
     }
     @Override
     public boolean eat(Animal animal) {

@@ -4,6 +4,7 @@ public class Wolf extends Predators{
         speed = 3;
         weightForSatiety = 8;
         dead = false;
+        AnimalType = String.valueOf(Wolf.class);
     }
     @Override
     public boolean eat(Animal animal) {

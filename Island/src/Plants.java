@@ -1,5 +1,6 @@
 public class Plants extends Animal implements Eatable{
     int weight = 1;
+    String AnimalType = String.valueOf(Plants.class);
 
     @Override
     public boolean chanceOfBeingEaten(Animal animal) {

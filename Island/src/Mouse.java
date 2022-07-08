@@ -6,6 +6,7 @@ public class Mouse extends Herbivores implements Eatable {
         speed = 1;
         weightForSatiety = 0.01;
         dead = false;
+        AnimalType = String.valueOf(Mouse.class);
     }
     @Override
     public boolean eat(Animal animal) {
